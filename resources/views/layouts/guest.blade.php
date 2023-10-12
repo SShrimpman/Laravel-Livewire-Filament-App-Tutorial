@@ -17,11 +17,19 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+    <body class="font-sans antialiased bg-gray-900">
+        <x-banner />
+    
+        @include('layouts.partials.header')
+    
+        <main class="container mx-auto px-5 flex flex-grow">
             {{ $slot }}
-        </div>
-
+        </main>
+    
+        @include('layouts.partials.footer')
+    
+        @stack('modals')
+    
         @livewireScripts
     </body>
 </html>
