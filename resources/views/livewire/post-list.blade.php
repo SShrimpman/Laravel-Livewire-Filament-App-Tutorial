@@ -2,7 +2,8 @@
     <div class="flex justify-between items-center border-b border-gray-700">
         <div class="text-gray-400">
             @if ($this->activeCategory || $search)
-                <button class="text-gray-500 text-xs mr-3" wire:click='clearFilters()'>X</button>
+                {{-- Este wire:confirm serve para usar os alertas do browser com mensagens específicas, neste caso é para confirmar se quero remover o filtro --}}
+                <button class="text-gray-500 text-xs mr-3" wire:confirm.prompt="Are you sure? \n Type 'CONFIRM' to confirm |CONFIRM" wire:click='clearFilters()'>X</button>
             @endif
             @if ($this->activeCategory)
                 <x-badge wire:navigate href="{{ route('posts.index', ['category' => $this->activeCategory->slug]) }}" :textColor="$this->activeCategory->text_color" :bgColor="$this->activeCategory->bg_color">
