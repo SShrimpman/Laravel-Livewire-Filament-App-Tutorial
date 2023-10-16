@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     {{-- Este $post é igual a eu fazer :post="post" e deixa de ser necessário eu definir a função mount no component --}}
-                    <livewire:like-button :key="$post->id" :$post/>
+                    <livewire:like-button :key="'like-' . $post->id" :$post/>
                 </div>
             </div>
         </div>
