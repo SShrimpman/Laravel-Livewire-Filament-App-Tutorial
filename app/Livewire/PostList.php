@@ -45,6 +45,8 @@ class PostList extends Component
     #[Computed()]
     public function posts() {
         return Post::published()
+            ->with('author', 'categories')
+            ->withCount('likes')
             ->when($this->activeCategory, function ($query) {
                 $query->withCategory($this->category);
             })
@@ -58,7 +60,7 @@ class PostList extends Component
 
     #[Computed()]
     public function activeCategory() {
-        return Category::where('slug', $this->category)->first();
+        return Category::where('slug', $this->category)->first() ?? false;
     }
 
     public function render()
